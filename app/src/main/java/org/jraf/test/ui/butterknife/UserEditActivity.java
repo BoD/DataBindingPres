@@ -3,7 +3,9 @@ package org.jraf.test.ui.butterknife;
 import android.arch.lifecycle.LifecycleActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -15,12 +17,19 @@ import org.jraf.test.R;
 import org.jraf.test.data.Repository;
 import org.jraf.test.model.User;
 import org.jraf.test.util.Async;
+import org.jraf.test.util.ValidationUtil;
 
 public class UserEditActivity extends LifecycleActivity {
     public static final String EXTRA_USER_ID = "EXTRA_USER_ID";
 
-    @BindView(R.id.txtMessage) TextView mTxtMessage;
-    @BindView(R.id.edtEmail) EditText mEdtEmail;
+    @BindView(R.id.txtMessage)
+    TextView mTxtMessage;
+
+    @BindView(R.id.edtEmail)
+    EditText mEdtEmail;
+
+    @BindView(R.id.imgValid)
+    ImageView mImgValid;
 
     private User mUser;
 
@@ -48,15 +57,14 @@ public class UserEditActivity extends LifecycleActivity {
     }
 
     private void updateUi() {
-        mTxtMessage.setText(getString(R.string.mail_userEdit, mUser.getFirstName(), mUser.getLastName(), mUser.getEmail()));
+        mTxtMessage.setText(getString(R.string.mail_userEdit, mUser.getFirstName(), mUser.getLastName()));
         mEdtEmail.setText(mUser.getEmail());
     }
 
     @OnTextChanged(R.id.edtEmail)
     protected void onEmailChanged(Editable editable) {
         mUser.setEmail(editable.toString());
-
-        mTxtMessage.setText(getString(R.string.mail_userEdit, mUser.getFirstName(), mUser.getLastName(), mUser.getEmail()));
+        mImgValid.setVisibility(ValidationUtil.isValidEmail(mUser.getEmail()) ? View.VISIBLE : View.INVISIBLE);
     }
 
     @OnClick(R.id.btnSave)

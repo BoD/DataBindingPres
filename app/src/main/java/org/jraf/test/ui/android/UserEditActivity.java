@@ -6,18 +6,21 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.jraf.test.R;
 import org.jraf.test.data.Repository;
 import org.jraf.test.model.User;
 import org.jraf.test.util.Async;
+import org.jraf.test.util.ValidationUtil;
 
 public class UserEditActivity extends LifecycleActivity {
     public static final String EXTRA_USER_ID = "EXTRA_USER_ID";
 
     private TextView mTxtMessage;
     private EditText mEdtEmail;
+    private ImageView mImgValid;
 
     private User mUser;
 
@@ -27,6 +30,7 @@ public class UserEditActivity extends LifecycleActivity {
         setContentView(R.layout.android);
         mTxtMessage = (TextView) findViewById(R.id.txtMessage);
         mEdtEmail = (EditText) findViewById(R.id.edtEmail);
+        mImgValid = (ImageView) findViewById(R.id.imgValid);
         findViewById(R.id.btnSave).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +56,7 @@ public class UserEditActivity extends LifecycleActivity {
     }
 
     private void updateUi() {
-        mTxtMessage.setText(getString(R.string.mail_userEdit, mUser.getFirstName(), mUser.getLastName(), mUser.getEmail()));
+        mTxtMessage.setText(getString(R.string.mail_userEdit, mUser.getFirstName(), mUser.getLastName()));
         mEdtEmail.setText(mUser.getEmail());
         mEdtEmail.addTextChangedListener(new TextWatcher() {
             @Override
@@ -64,8 +68,7 @@ public class UserEditActivity extends LifecycleActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 mUser.setEmail(editable.toString());
-
-                mTxtMessage.setText(getString(R.string.mail_userEdit, mUser.getFirstName(), mUser.getLastName(), mUser.getEmail()));
+                mImgValid.setVisibility(ValidationUtil.isValidEmail(mUser.getEmail()) ? View.VISIBLE : View.INVISIBLE);
             }
         });
     }

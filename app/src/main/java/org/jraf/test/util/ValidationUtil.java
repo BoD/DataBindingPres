@@ -1,7 +1,10 @@
 package org.jraf.test.util;
 
+import android.util.Patterns;
+
 public class ValidationUtil {
     public static boolean isValidEmail(String email) {
-        return email != null && email.contains("@");
+        if (email == null) return false;
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

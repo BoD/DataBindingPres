@@ -10,6 +10,10 @@
             name="user"
             type="org.jraf.test.model.User" />
 
+        <import type="android.view.View" />
+
+        <import type="org.jraf.test.util.ValidationUtil" />
+
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -22,7 +26,7 @@
             android:id="@+id/txtMessage"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:text="@{@string/mail_userEdit(user.firstName, user.lastName, user.email)}"
+            android:text="@{@string/mail_userEdit(user.firstName, user.lastName)}"
             android:textSize="22sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -36,9 +40,21 @@
             android:layout_height="wrap_content"
             android:text="@{user.email}"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/imgValid"
             app:layout_constraintTop_toBottomOf="@+id/txtMessage"
             tools:text="test@test.com" />
+
+        <!-- Valid email indication -->
+        <ImageView
+            android:id="@+id/imgValid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_check_circle_black_24dp"
+            android:visibility="@{ValidationUtil.isValidEmail(user.email) ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@id/edtEmail"
+            app:layout_constraintLeft_toRightOf="@id/edtEmail"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/edtEmail" />
 
         <!-- Save -->
         <Button
