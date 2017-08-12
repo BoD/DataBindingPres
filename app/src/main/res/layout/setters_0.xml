@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="org.jraf.test.util.ValidationUtil" />
+
+        <variable
+            name="controller"
+            type="org.jraf.test.ui.setters_0.UserEditActivity" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="org.jraf.test.ui.android.UserEditActivity">
+
+        <!-- Message -->
+        <TextView
+            android:id="@+id/txtMessage"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:text="@{@string/mail_userEdit(controller.user.firstName, controller.user.lastName, controller.userEmail)}"
+            android:textSize="22sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Hello, World!" />
+
+        <!-- Email -->
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:text="@={controller.userEmail}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/imgValid"
+            app:layout_constraintTop_toBottomOf="@+id/txtMessage"
+            tools:text="test@test.com" />
+
+        <!-- Valid email indication -->
+        <ImageView
+            android:id="@+id/imgValid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_check_circle_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/edtEmail"
+            app:layout_constraintLeft_toRightOf="@id/edtEmail"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/edtEmail"
+            app:visible="@{ValidationUtil.isValidEmail(controller.userEmail)}" />
+
+        <!-- Save -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> controller.save()}"
+            android:text="@string/save"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
