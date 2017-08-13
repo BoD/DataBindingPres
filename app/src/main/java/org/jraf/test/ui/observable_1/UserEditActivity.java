@@ -26,7 +26,7 @@ public class UserEditActivity extends AppCompatActivity {
 
         userEmail.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
-            public void onPropertyChanged(Observable observable, int i) {
+            public void onPropertyChanged(Observable sender, int propertyId) {
                 user.get().setEmail(userEmail.get());
             }
         });
