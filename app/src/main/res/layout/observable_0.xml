@@ -7,7 +7,6 @@
     <data>
 
         <import type="android.view.View" />
-
         <import type="org.jraf.test.util.ValidationUtil" />
 
         <variable

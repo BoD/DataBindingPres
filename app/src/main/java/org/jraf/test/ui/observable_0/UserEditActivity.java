@@ -14,7 +14,7 @@ import org.jraf.test.util.Async;
 public class UserEditActivity extends AppCompatActivity {
     public static final String EXTRA_USER_ID = "EXTRA_USER_ID";
 
-    public ObservableField<User> user = new ObservableField<>();
+    public final ObservableField<User> user = new ObservableField<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

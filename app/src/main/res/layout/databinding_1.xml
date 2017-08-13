@@ -10,8 +10,8 @@
             name="user"
             type="org.jraf.test.model.User" />
 
-        <import type="android.view.View" />
 
+        <import type="android.view.View" />
         <import type="org.jraf.test.util.ValidationUtil" />
 
     </data>

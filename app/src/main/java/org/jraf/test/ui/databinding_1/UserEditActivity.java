@@ -51,7 +51,6 @@ public class UserEditActivity extends AppCompatActivity {
 
     private void updateUi() {
         mBinding.setUser(mUser);
-
         mBinding.edtEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
