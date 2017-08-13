@@ -1,10 +1,10 @@
 package org.jraf.test.ui.observable_1;
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.databinding.DataBindingUtil;
 import android.databinding.Observable;
 import android.databinding.ObservableField;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import org.jraf.test.R;
 import org.jraf.test.data.Repository;
@@ -12,7 +12,7 @@ import org.jraf.test.databinding.Observable1Binding;
 import org.jraf.test.model.User;
 import org.jraf.test.util.Async;
 
-public class UserEditActivity extends LifecycleActivity {
+public class UserEditActivity extends AppCompatActivity {
     public static final String EXTRA_USER_ID = "EXTRA_USER_ID";
 
     public ObservableField<User> user = new ObservableField<>();

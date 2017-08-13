@@ -1,7 +1,7 @@
 package org.jraf.test.ui.butterknife;
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
@@ -19,7 +19,7 @@ import org.jraf.test.model.User;
 import org.jraf.test.util.Async;
 import org.jraf.test.util.ValidationUtil;
 
-public class UserEditActivity extends LifecycleActivity {
+public class UserEditActivity extends AppCompatActivity {
     public static final String EXTRA_USER_ID = "EXTRA_USER_ID";
 
     @BindView(R.id.txtMessage)

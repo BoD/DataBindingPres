@@ -1,8 +1,8 @@
 package org.jraf.test.ui.databinding_2;
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import org.jraf.test.R;
 import org.jraf.test.data.Repository;
@@ -10,7 +10,7 @@ import org.jraf.test.databinding.Databinding2Binding;
 import org.jraf.test.model.User;
 import org.jraf.test.util.Async;
 
-public class UserEditActivity extends LifecycleActivity {
+public class UserEditActivity extends AppCompatActivity {
     public static final String EXTRA_USER_ID = "EXTRA_USER_ID";
 
     private Databinding2Binding mBinding;
